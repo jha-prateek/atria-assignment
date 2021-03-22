@@ -9,11 +9,11 @@ ADD ./requirements.txt .
 
 RUN pip install -r requirements.txt
 ADD . .
-RUN python manage.py makemigrations api \
-    && python manage.py migrate \
-    && python manage.py create_data temperature 500 \
-    && python manage.py create_data lumen 500 \
-    && python manage.py create_data humidity 500
+RUN python manage.py makemigrations api
+RUN python manage.py migrate
+RUN python manage.py create_data temperature 500
+RUN python manage.py create_data lumen 500
+RUN python manage.py create_data humidity 500
 
 EXPOSE 8001
 
