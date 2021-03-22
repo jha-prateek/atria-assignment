@@ -1,5 +1,6 @@
 ## Run
 - `docker-compose up`
+- localhost:80
 
 ## Add
 - POST endpoint http://localhost:8001/api/add
