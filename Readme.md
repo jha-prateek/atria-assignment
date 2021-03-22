@@ -1,6 +1,15 @@
 ## Run
 - `docker-compose up`
 
+## Add
+- POST endpoint http://localhost:8001/api/add
+- ```
+  {
+        "reading": 23.0, 
+        "timestamp": 1616391452614, 
+        "sensor_type": "temperature"	
+  }
+
 ## Screenshots
 ### Table
 ![alt text](Screenshots/Table.png "Title")
