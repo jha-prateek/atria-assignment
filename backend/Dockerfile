@@ -1,0 +1,20 @@
+FROM python:3.8.6-alpine3.12 as pyt
+
+ENV PYTHONUNBUFFERED 1
+ENV LANG C.UTF-8
+ENV DEBIAN_FRONTEND=noninteractive
+
+WORKDIR /app
+ADD ./requirements.txt .
+
+RUN pip install -r requirements.txt
+ADD . .
+RUN python manage.py makemigrations api \
+    && python manage.py migrate \
+    && python manage.py create_data temperature 500 \
+    && python manage.py create_data lumen 500 \
+    && python manage.py create_data humidity 500
+
+EXPOSE 8001
+
+CMD gunicorn backend.wsgi:application --bind 0.0.0.0:8001
