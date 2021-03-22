@@ -11,10 +11,11 @@ RUN pip install -r requirements.txt
 ADD . .
 RUN python manage.py makemigrations api
 RUN python manage.py migrate
+
+EXPOSE 8001
+
 RUN python manage.py create_data temperature 500
 RUN python manage.py create_data lumen 500
 RUN python manage.py create_data humidity 500
-
-EXPOSE 8001
 
 CMD gunicorn backend.wsgi:application --bind 0.0.0.0:8001
